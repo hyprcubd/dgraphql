@@ -31,8 +31,8 @@ func New(url, token string) *Client {
 	}
 }
 
-// Query executes the query passed in and unmarshals the result into the result arg
-func (c *Client) Query(ctx context.Context, q string, result interface{}) error {
+// RaQuery executes the query passed in as-is and unmarshals the result into the result arg
+func (c *Client) RawQuery(ctx context.Context, q string, result interface{}) error {
 	// This is a no-op if no tracer is set up
 	_, span := tracer.Start(ctx, "query")
 	defer span.End()
